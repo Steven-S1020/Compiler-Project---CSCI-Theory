@@ -10,7 +10,7 @@
 ">"         printf("GT\n");
 ">="        printf("GEQ\n");
 "<>"        printf("NEQ\n");
-"=="        printf("EQUAL\n");
+"=="        printf("EQ\n");
 
   /* Math */
 "+"         printf("PLUS\n");
@@ -28,6 +28,7 @@
 "endif"     printf("ENDIF\n");
 
   /* Other */
+"="         printf("ASSIGN\n");
 [a-z]+      printf("VAR\n");
 [0-9]+      printf("NUM\n");
 ";"         printf("SEMI\n");
