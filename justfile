@@ -11,7 +11,9 @@ build-P1:
 [group('Build')]
 build-P2:
     @echo "Building P2..."
-    # your P2 build command here
+    @flex -o src/P2/lex.yy.c src/P2/compiler.lex
+    @yacc -d -b src/P2/y src/P2/compiler.y
+    @cc src/P2/lex.yy.c src/P2/y.tab.c -lfl -o src/P2/a.out
 
 [group('Build')]
 build-P3:
@@ -30,6 +32,7 @@ test-P1:
 [group('Test')]
 test-P2:
     @echo "Testing P2..."
+    @cat tests/test-P2.txt | src/P2/a.out
 
 [group('Test')]
 test-P3:
