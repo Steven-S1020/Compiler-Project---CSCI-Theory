@@ -98,14 +98,14 @@ while_stmt:
       {
           currentWhile = whilenum++;
           condMode = 1;
-          printf("wtop%d:\t", currentWhile);
+          printf("wtop%d:  \n", currentWhile);
       }
       conditional
       DO
       stmts
       ENDWHILE SEMI
       {
-          printf("\tJMP wtop%d\n", currentWhile);
+          printf("        JMP wtop%d\n", currentWhile);
           printf("end%d:\n", currentWhile);
       }
     ;
@@ -133,7 +133,7 @@ if_end:
       }
     | ELSE
       {
-          printf("\tJMP end%d\n", currentIf);
+          printf("        JMP end%d\n", currentIf);
           printf("else%d:\n", currentIf);
       }
       stmts
@@ -150,14 +150,14 @@ if_end:
 conditional:
       operand condition operand
       {
-          printf("MOV R8, %s\n", $1);
-          printf("\tMOV R7, %s\n", $3);
-          printf("\tCMP R7\n");
+          printf("        MOV R8, %s\n", $1);
+          printf("        MOV R7, %s\n", $3);
+          printf("        CMP R7\n");
 
           if(condMode == 1)
-              printf("\t%s end%d\n", $2, currentWhile);
+              printf("        %s end%d\n", $2, currentWhile);
           else
-              printf("\t%s else%d\n", $2, currentIf);
+              printf("        %s else%d\n", $2, currentIf);
       }
     ;
 
